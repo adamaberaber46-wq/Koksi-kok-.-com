@@ -38,8 +38,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const metadata: Metadata = {
     title: 'Koksi Kok',
-    description: 'تسوق الآن من شركة Koksi Kok أفضل الملابس، الأحذية، والإكسسوارات الأصلية بأسعار مميزة وجودة مضمونة. تسوق أونلاين بسهولة مع شحن سريع لجميع المحافظات.',
-    keywords: "Koksi Kok, شركة ملابس وأحذية وإكسسوارات, متجر إلكتروني, تسوق أونلاين, كوتشي أديداس, أحذية نايك, ملابس رجالي ونسائي, ترنجات أصلية, ساعات وإكسسوارات, موضة عصرية, منتجات أصلية, خصومات, عروض, ملابس كاجوال, أحذية سبورت, شنط, تسوق الآن, جودة عالية",
+    description:
+      'تسوق الآن من شركة Koksi Kok أفضل الملابس، الأحذية، والإكسسوارات الأصلية بأسعار مميزة وجودة مضمونة. تسوق أونلاين بسهولة مع شحن سريع لجميع المحافظات.',
+    keywords:
+      'Koksi Kok, شركة ملابس وأحذية وإكسسوارات, متجر إلكتروني, تسوق أونلاين, كوتشي أديداس, أحذية نايك, ملابس رجالي ونسائي, ترنجات أصلية, ساعات وإكسسوارات, موضة عصرية, منتجات أصلية, خصومات, عروض, ملابس كاجوال, أحذية سبورت, شنط, تسوق الآن, جودة عالية',
     authors: [{ name: 'Koksi Kok Company' }],
     robots: {
       index: true,
@@ -47,7 +49,8 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       title: 'Koksi Kok | متجر إلكتروني للأزياء والأحذية والإكسسوارات',
-      description: 'أفضل متجر إلكتروني لشراء الأحذية والملابس والإكسسوارات الأصلية بأسعار مميزة وجودة مضمونة.',
+      description:
+        'أفضل متجر إلكتروني لشراء الأحذية والملابس والإكسسوارات الأصلية بأسعار مميزة وجودة مضمونة.',
       url: 'https://koksi-kok.vercel.app',
       siteName: 'Koksi Kok',
       images: [
@@ -63,17 +66,17 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: 'Koksi Kok | Fashion & Shoes Store',
-      description: 'تسوق أحدث الأزياء والأحذية والإكسسوارات الأصلية من Koksi Kok.',
+      description:
+        'تسوق أحدث الأزياء والأحذية والإكسسوارات الأصلية من Koksi Kok.',
       images: ['https://koksi-kok.vercel.app/logo.png'],
     },
     icons: {
       icon: settings?.faviconUrl || '/favicon.ico', // Default fallback
-    }
+    },
   };
 
   return metadata;
 }
-
 
 export default function RootLayout({
   children,
@@ -103,12 +106,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Add Google Search Console verification tag here */}
+        {/* ✅ Google Search Console Verification */}
+        <meta
+          name="google-site-verification"
+          content="ZQLPiVxNUyCsG-X88B3lCMLXTsaffJg3kgE6KdLYuro"
+        />
+
+        {/* ✅ Structured Data (JSON-LD) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
+
       <body
         className={cn(
           'min-h-screen bg-background font-body antialiased',
