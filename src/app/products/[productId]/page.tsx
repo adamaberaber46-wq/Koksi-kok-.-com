@@ -47,20 +47,27 @@ export default function ProductDetailPage() {
     }
   }, [product]);
 
+  // ✅ التعديل هنا
   useEffect(() => {
-    if (selectedVariant && selectedVariant.imageUrls && selectedVariant.imageUrls.length > 0) {
-      const newGalleryImages = selectedVariant.imageUrls;
-      setGalleryImages(newGalleryImages);
-      setActiveImage(newGalleryImages[0]);
-    } else if (product && product.imageUrls && product.imageUrls.length > 0) {
-      const newGalleryImages = product.imageUrls;
-      setGalleryImages(newGalleryImages);
-      setActiveImage(newGalleryImages[0]);
-    } else {
+    if (!product) return;
+
+    // لو فيه variant (لون) مختار ومعاه صور، اعرض الصور دي بس
+    if (selectedVariant?.imageUrls?.length) {
+      setGalleryImages(selectedVariant.imageUrls);
+      setActiveImage(selectedVariant.imageUrls[0]);
+    }
+    // لو مافيش variant محدد، اعرض الصور العامة للمنتج فقط
+    else if (product.imageUrls?.length) {
+      setGalleryImages(product.imageUrls);
+      setActiveImage(product.imageUrls[0]);
+    }
+    // لو مافيش صور خالص
+    else {
       setGalleryImages([]);
       setActiveImage(undefined);
     }
   }, [selectedVariant, product]);
+  // ✅ نهاية التعديل
 
   const handleVariantChange = (variant: ProductVariant) => {
     setSelectedVariant(variant);
