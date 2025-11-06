@@ -105,27 +105,16 @@ export default function Home() {
               className="w-full"
             >
               <CarouselContent className="gap-[1px]">
-                {productsLoading &&
-                  Array.from({ length: 4 }).map((_, i) => (
-                    <CarouselItem key={i} className="sm:basis-1/2 lg:basis-1/4">
-                      <div className="p-[1px]">
-                        <div className="flex flex-col gap-2">
-                          <Skeleton className="aspect-square w-full" />
-                          <Skeleton className="w-3/4 h-6" />
-                          <Skeleton className="w-1/2 h-5" />
-                        </div>
-                      </div>
-                    </CarouselItem>
-                  ))}
-                {!productsLoading &&
-                  featuredProducts &&
-                  featuredProducts.map((product) => (
-                    <CarouselItem key={product.id} className="sm:basis-1/2 lg:basis-1/4">
-                      <div className="p-[1px]">
-                        <ProductCard product={product} />
-                      </div>
-                    </CarouselItem>
-                  ))}
+                {featuredProducts.map((product) => (
+                  <CarouselItem
+                    key={product.id}
+                    className="sm:basis-1/2 lg:basis-1/4"
+                  >
+                    <div className="border border-transparent hover:border-primary transition-all duration-200">
+                      <ProductCard product={product} />
+                    </div>
+                  </CarouselItem>
+                ))}
               </CarouselContent>
               <CarouselPrevious className="hidden md:flex" />
               <CarouselNext className="hidden md:flex" />
@@ -147,23 +136,16 @@ export default function Home() {
             className="w-full"
           >
             <CarouselContent className="gap-[1px]">
-              {categoriesLoading &&
-                Array.from({ length: 3 }).map((_, i) => (
-                  <CarouselItem key={i} className="sm:basis-1/2 lg:basis-1/3">
-                    <div className="p-[1px]">
-                      <Skeleton className="aspect-[4/3] w-full" />
-                    </div>
-                  </CarouselItem>
-                ))}
-              {!categoriesLoading &&
-                categories &&
-                categories.map((category) => (
-                  <CarouselItem key={category.id} className="sm:basis-1/2 lg:basis-1/3">
-                    <div className="p-[1px]">
-                      <CategoryCard category={category} />
-                    </div>
-                  </CarouselItem>
-                ))}
+              {categories?.map((category) => (
+                <CarouselItem
+                  key={category.id}
+                  className="sm:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="border border-transparent hover:border-primary transition-all duration-200">
+                    <CategoryCard category={category} />
+                  </div>
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <CarouselPrevious className="hidden md:flex" />
             <CarouselNext className="hidden md:flex" />
